@@ -48,12 +48,11 @@ services:
         condition: service_healthy
 
   nginx:
-    image: nginx:alpine
+    image: ghcr.io/mahn-ke/invoices-by-vincent/nginx:latest
     restart: unless-stopped
     ports:
       - "3008:80"
     volumes:
-      - ./nginx:/etc/nginx/conf.d:ro
       - app_public:/var/www/html/public:ro
       - app_storage:/var/www/html/storage:ro
     depends_on:
